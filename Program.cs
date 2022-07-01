@@ -28,13 +28,15 @@ string[] AddElementToResultArray(string element, string[] array)
 
     return newArray;
 }
-void PrintArray(string[] array)
+string Print(string[] array)
 {
-    for (int i = 0; i < array.Length - 1; i++)
+    string result = String.Empty;
+    for (int i = 0; i < array.Length -1; i++)
     {
-        Console.Write($"{array[i]}, ");
+        result += $"{array[i]}, ";
     }
-    Console.WriteLine($"{array[array.Length - 1]}.");
+    result += $"{array[array.Length-1]}.";
+    return result;
 }
 
 Console.Clear();
@@ -54,6 +56,6 @@ else
     if (Console.ReadKey().Key == ConsoleKey.Y) 
     {
         Console.WriteLine();
-        PrintArray(resultArray);
+        Console.WriteLine(Print(resultArray));
     }
 }
