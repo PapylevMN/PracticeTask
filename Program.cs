@@ -21,29 +21,35 @@ string[] EnterArray()
 }
 string[] AddElementToResultArray(string element, string[] array)
 {
-    
-    return array;
+    string[] newArray = new string[array.Length + 1];
+    newArray[array.Length] = element;
+    for (int i = 0; i < array.Length; i++)
+        newArray[i] = array[i];
+
+    return newArray;
 }
 void PrintArray(string[] array)
 {
-    Console.WriteLine("Строки, длиной менее, либо равной 3 символа:");
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length - 1; i++)
     {
-        Console.Write($"{array[i]} ");
+        Console.Write($"{array[i]}, ");
     }
+    Console.WriteLine($"{array[array.Length - 1]}.");
 }
 
 Console.Clear();
 string[] array = EnterArray();
-string[] resultArray = {"asdf", "asd"};
+string[] resultArray = {};
 
 for (int i = 0; i < array.Length; i++)
 {
     if (array[i].Length <= 3) resultArray = AddElementToResultArray(array[i], resultArray);
 }
+
 if (resultArray.Length == 0) Console.WriteLine("В исходном массиве нет строк, длина которых меньше, либо равна 3 символа.");
 else 
 {
+    Console.WriteLine($"В результирующем массиве {resultArray.Length} элементов.");
     Console.WriteLine("Желаете вывести результат на экран? Y/N");
     if (Console.ReadKey().Key == ConsoleKey.Y) 
     {
